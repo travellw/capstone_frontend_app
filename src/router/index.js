@@ -5,6 +5,7 @@ import Signup from '../views/Signup.vue';
 import Login from '../views/Login.vue';
 
 
+
 Vue.use(VueRouter)
 
   const routes = [
@@ -23,6 +24,10 @@ Vue.use(VueRouter)
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
+
+
+
+
   {
     path: '/signup',
     name: "Signup",
@@ -39,6 +44,7 @@ Vue.use(VueRouter)
     name: 'Home',
     component: Home
   },
+
 
 
 ];

@@ -5,7 +5,7 @@
       <!-- show login when not authenticated -->
       <button class="button-login" v-if="!$auth.isAuthenticated" @click="login">Login</button>
       <!-- show logout when authenticated -->
-      <button class v-if="$auth.isAuthenticated" @click="logout">Log out</button>
+      <button v-if="$auth.isAuthenticated" @click="logout">Log out</button>
       <button class="button-about">About</button>
       <button class="button-documentation">Documentation</button>
       <button class="button-support">Support</button>
@@ -102,13 +102,9 @@
   <script>
 // .. imports removed for brevity
 
-import HelloWorld from "../components/HelloWorld"
 
 export default {
   name: "login",
-  components: {
-    HelloWorld
-  },
   methods: {
     // Log the user in
     login() {
