@@ -32,7 +32,7 @@
 
 
 .button-login {
-  background-color: pink; /* Green */
+  background-color: #eee4e1ff; /* Green */
   display: block;
   border: none;
   color: black;
@@ -45,7 +45,7 @@
 }
 
 .button-logout {
-  background-color: pink; /* Green */
+  background-color: #e7d8c9ff; /* Green */
   display: block;
   border: none;
   color: black;
@@ -58,7 +58,7 @@
 }
 
 .button-about {
-  background-color: blue; /* Green */
+  background-color: #e6beaeff; /* Green */
   display: block;
   border: none;
   color: black;
@@ -71,7 +71,7 @@
 }
 
 .button-documentation {
-  background-color: green; /* Green */
+  background-color: #b2967dff; /* Green */
   display: block;
   border: none;
   color: black;
@@ -84,7 +84,7 @@
 }
 
 .button-support {
-  background-color: yellow; /* Green */
+  background-color: #ffe0b2; /* Green */
   display: block;
   border: none;
   color: black;

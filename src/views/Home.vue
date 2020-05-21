@@ -1,77 +1,21 @@
- <template>
-   
+ <template class="background">
    
    <div class="container">
-     <button class="waves-effect waves-teal btn-flat" v-on:click="openForm()" >+</button>
-     <button class="waves-effect waves-teal btn-flat" v-on:click="openForm()" >-</button>
-     <button class="waves-effect waves-teal btn-flat" v-on:click="openForm()" >Key</button>
     <div>
+  
       
-      <div class='nav'>
-      <button class="button-login">Dashboard</button>
-      <button class="button-about">About</button>
-      <button class="button-documentation">Documentation</button>
-      <button class="button-support">Support</button>
-      <button class="button-login">Logout</button>
-      </div>
-      
-    <div class="google-toolbar">
-    <ul>
-    <li class="waves-effect waves-teal btn-flat" id="doc">
-      <a href="https://docs.google.com/document/create" target="_blank">
-        <img src="https://image.flaticon.com/icons/svg/300/300213.svg" width="32" height="32">
-        <span class="label">
-          New Document
-        </span>
-      </a>
-    </li>
-    <li class="waves-effect waves-teal btn-flat" id="sheet">
-      <a href="https://docs.google.com/spreadsheet/ccc?new" target="_blank">
-        <img src="https://image.flaticon.com/icons/svg/300/300232.svg" width="32" height="32">
-        <span class="label">
-          New Spreadsheet
-        </span>
-      </a>
-    </li>
-    <li class="waves-effect waves-teal btn-flat" id="prez">
-      <a href="https://docs.google.com/presentation/create" target="_blank">
-        <img src="https://image.flaticon.com/icons/svg/300/300233.svg" width="32" height="32">
-        <span class="label">
-          New Presentation
-        </span>
-      </a>
-    </li>
-    <li class="waves-effect waves-teal btn-flat" id="draw">
-      <a href="https://docs.google.com/drawings/create?usp=drive_web" target="_blank">
-        <img src="https://miro.medium.com/max/417/1*VEP0ecJ7cnjzHdPoiIs-ag.png" width="32" height="32">
-        <span class="label">
-          New Drawing
-        </span>
-      </a>
-    </li>
-    <li class="waves-effect waves-teal btn-flat" id="form">
-      <a href="https://docs.google.com/forms/create" target="_new">
-        <img src="https://image.flaticon.com/icons/svg/300/300231.svg" width="32" height="32">
-        <span class="label">
-          New Form
-        </span>
-      </a>
-    </li>
-  </ul>
-  </div>
-  <div id="status">
-  </div>
-  </div>
+   
      
 
      <div class="wrapper">
     <div class="waitingTickets">
+       <div>Waiting Tickets</div>
     <div class="waiting-box" v-for="ticket in waitingTickets" v-bind:key="ticket.id">
       <p>ID: {{ ticket.id }}</p>
       <p>TITLE: {{ ticket.title }}</p>
-      <button class="waves-effect waves-light btn" v-on:click="showTicket(ticket)">Expand</button>
-      <button class="waves-effect waves-light btn" v-on:click="openupdateForm(ticket)">Update</button>
-      <button class="waves-effect waves-light btn" v-on:click="destroyTicket(ticket)">Delete</button>  
+      <button class="waves-effect waves-light orange lighten-4 btn" v-on:click="showTicket(ticket)">Expand</button>
+      <button class="waves-effect waves-light orange lighten-4 btn" v-on:click="openupdateForm(ticket)">Update</button>
+      <button class="waves-effect waves-light orange lighten-4 btn" v-on:click="destroyTicket(ticket)">Delete</button>  
       <div v-if= "ticket === currentTicket">
       <p>Status: {{ticket.status}} </p>
       <p>Created: {{ ticket.created }}</p>
@@ -85,12 +29,13 @@
     </div>  
   
   <div class="openTickets">
+     <div>Open Tickets</div>
     <div class="open-box" id="some-div" draggable=true v-for="ticket in openTickets" v-bind:key="ticket.id">
       <p>ID: {{ ticket.id }}</p>
       <p>TITLE: {{ ticket.title }}</p>
-      <button class="waves-effect waves-light btn" v-on:click="showTicket(ticket)">Expand</button>
-      <button class="waves-effect waves-light btn" v-on:click="openupdateForm(ticket)">Update</button>
-      <button class="waves-effect waves-light btn" v-on:click="destroyTicket(ticket)">Delete</button>  
+      <button class="waves-effect waves-light deep-orange lighten-5 btn" v-on:click="showTicket(ticket)">Expand</button>
+      <button class="waves-effect waves-light deep-orange lighten-5 btn" v-on:click="openupdateForm(ticket)">Update</button>
+      <button class="waves-effect waves-light deep-orange lighten-5 btn" v-on:click="destroyTicket(ticket)">Delete</button>  
       <span id="some-element">
       <div v-if= "ticket === currentTicket">
       <p>Status: {{ticket.status}} </p>
@@ -107,12 +52,13 @@
 
 
   <div class="emergencyTickets"> 
+    <div>Emergency Tickets</div>
     <div class="emergency-box" v-for="ticket in emergencyTickets" v-bind:key="ticket.id">
       <p>ID: {{ ticket.id }}</p>
       <p>TITLE: {{ ticket.title }}</p>
-      <button class="waves-effect waves-light btn" v-on:click="showTicket(ticket)">Expand</button>
-      <button class="waves-effect waves-light btn" v-on:click="openupdateForm(ticket)">Update</button>
-      <button class="waves-effect waves-light btn" v-on:click="destroyTicket(ticket)">Delete</button>  
+      <button class="waves-effect waves-light brown btn" v-on:click="showTicket(ticket)">Expand</button>
+      <button class="waves-effect waves-light brown btn" v-on:click="openupdateForm(ticket)">Update</button>
+      <button class="waves-effect waves-light brown btn" v-on:click="destroyTicket(ticket)">Delete</button>  
       <div v-if= "ticket === currentTicket">
       <p>Status: {{ticket.status}} </p>
       <p>Created: {{ ticket.created }}</p>
@@ -128,17 +74,18 @@
     
 
     <div class="pendingTickets">
+       <div>Pending Tickets</div>
     <div class="pending-box"  v-for="ticket in pendingTickets" v-bind:key="ticket.id">
       <p>ID: {{ ticket.id }}</p>
       <p>TITLE: {{ ticket.title }}</p>
-      <button class="waves-effect waves-light btn" v-on:click="showTicket(ticket)">Expand</button>
-      <button class="waves-effect waves-light btn" v-on:click="openupdateForm(ticket)">Update</button>
-      <button class="waves-effect waves-light btn" v-on:click="destroyTicket(ticket)">Delete</button>  
+      <button class="waves-effect waves-light deep-orange lighten-4 btn" v-on:click="showTicket(ticket)">Expand</button>
+      <button class="waves-effect waves-light deep-orange lighten-4 btn" v-on:click="openupdateForm(ticket)">Update</button>
+      <button class="waves-effect waves-light deep-orange lighten-4 btn" v-on:click="destroyTicket(ticket)">Delete</button>  
       <div v-if= "ticket === currentTicket">
       <p>Status: {{ticket.status}} </p>
-      <p>Created: {{ ticket.created }}</p>
+      <!-- <p>Created: {{ ticket.created }}</p> -->
       <p>Originator: {{ ticket.originator }}</p>
-      <p>User: {{ ticket.user_id }}</p>
+      <!-- <p>User: {{ ticket.user_id }}</p> -->
       <p>Issue: {{ ticket.issue }}</p>
       <p>Resolution: {{ ticket.resolution }}</p>
       <p>Status: {{ ticket.status }}</p>
@@ -147,6 +94,57 @@
     </div>
     </div>
 
+ <div class="nav">
+    <ul>
+    <li class="new-ticket" id="doc">
+        <img src="https://png2.cleanpng.com/sh/902291eef34d49b71342bc4c0f51dcf7/L0KzQYm3VsIyN6tBepH0aYP2gLBuTcIxOWkyfNH0b33sPbT2jgB2fJZ3Rdtsb372PcXwgBtmfF5rgd52LXnmf7A0hPV0cZhzRadrMnLmQYXoWcJnO5QARqY9M0K3QYWCUcUzQWYATKMDNkazQYq1kP5o/kisspng-2018-dokomi-computer-icons-ticket-film-icon-design-5b2bc14a92f3c9.4432414915295941866019.png" width="32" height="32">
+    <span class="label" v-on:click="openForm()" >New Ticket</span>
+    </li>
+    <li class="new-ticket" id="doc">
+      <a href="https://docs.google.com/document/create" target="_blank">
+        <img src="https://image.flaticon.com/icons/svg/300/300213.svg" width="32" height="32">
+        <span class="label">
+          New Document
+        </span>
+      </a>
+    </li>
+    <li class="new-ticket" id="sheet">
+      <a href="https://docs.google.com/spreadsheet/ccc?new" target="_blank">
+        <img src="https://image.flaticon.com/icons/svg/300/300232.svg" width="32" height="32">
+        <span class="label">
+          New Spreadsheet
+        </span>
+      </a>
+    </li>
+    <li class="new-ticket" id="prez">
+      <a href="https://docs.google.com/presentation/create" target="_blank">
+        <img src="https://image.flaticon.com/icons/svg/300/300233.svg" width="32" height="32">
+        <span class="label">
+          New Presentation
+        </span>
+      </a>
+    </li>
+    <li class="new-ticket" id="draw">
+      <a href="https://docs.google.com/drawings/create?usp=drive_web" target="_blank">
+        <img src="https://miro.medium.com/max/417/1*VEP0ecJ7cnjzHdPoiIs-ag.png" width="32" height="32">
+        <span class="label">
+          New Drawing
+        </span>
+      </a>
+    </li>
+    <li class="new-ticket" id="form">
+      <a href="https://docs.google.com/forms/create" target="_new">
+        <img src="https://image.flaticon.com/icons/svg/300/300231.svg" width="32" height="32">
+        <span class="label">
+          New Form
+        </span>
+      </a>
+    </li>
+  </ul>
+  </div>
+  <div id="status">
+  </div>
+  </div>
 
 <div class="form-popup" id="myForm">
   <div class="form-container">
@@ -156,12 +154,22 @@
      <input type="text" v-model="newTicketTitle" />
      Originator: 
      <input type="text" v-model="newTicketOriginator" />
-     User: 
-     <input type="text" v-model="newTicketUser_ID" />
+     <!-- User: 
+     <input type="text" v-model="newTicketUser_ID" /> -->
      Issue: 
      <input type="text" v-model="newTicketIssue" />
      Resolution: 
      <input type="text" v-model="newTicketResolution" />
+     Attachments:
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>File</span>
+        <input type="file">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
      Status: 
     <p>
       <label>
@@ -193,8 +201,8 @@
         <span>Closed</span>
       </label>
     </p>
-    <button class="waves-effect waves-light btn" v-on:click="createTicket()">Submit</button>
-    <button type="button" class="btn cancel" v-on:click="closeForm()">Close</button>
+    <button class="waves-effect waves-light blue-grey btn-small" v-on:click="createTicket()">Submit</button>
+    <button class="waves-effect waves-light blue-grey btn-small" v-on:click="closeForm()">Close</button>
   </div>
 </div>
 
@@ -207,12 +215,22 @@
      <input type="text" v-model="currentTicket.title" />
      Originator: 
      <input type="text" v-model="currentTicket.originator" />
-     User: 
-     <input type="text" v-model="currentTicket.user_id" />
+     <!-- User: 
+     <input type="text" v-model="currentTicket.user_id" /> -->
      Issue: 
      <input type="text" v-model="currentTicket.issue" />
      Resolution: 
      <input type="text" v-model="currentTicket.resolution" />
+     Attachments:
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>File</span>
+        <input type="file">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
      Status: 
       <p>
       <label>
@@ -245,8 +263,8 @@
       </label>
     </p>
      <!-- <input type="text" v-model="newTicketStatus" /> -->
-    <button class="waves-effect waves-light btn" v-on:click="updateTicket(currentTicket)">Submit</button>
-    <button type="button" class="btn cancel" v-on:click="closeupdateForm()">Close</button>
+    <button class="waves-effect waves-light blue-grey btn-small" v-on:click="updateTicket(currentTicket)">Submit</button>
+    <button class="waves-effect waves-light blue-grey btn-small" v-on:click="closeupdateForm()">Close</button>
   </div>
 </div>
 
@@ -262,7 +280,19 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
+  color: black
 }
+
+
+.nav {
+  text-align: center;
+}
+
+.background {
+  background-color: white;
+  font-family: 'Roboto Mono', monospace;
+}
+
 
 .createBox{
   grid-column: 1;
@@ -286,32 +316,47 @@
   grid-column: 4;
   grid-row: 2;
   text-align: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-family: 'Roboto Mono', monospace;
 }
 
 .openTickets {
   grid-column: 1;
   grid-row: 2;
   text-align: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-family: 'Roboto Mono', monospace;
 }
 
 .pendingTickets {
   grid-column: 2;
   grid-row: 2;
   text-align: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-family: 'Roboto Mono', monospace;
 }
 
 .emergencyTickets {
   grid-column: 3;
   grid-row: 2;
   text-align: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-family: 'Roboto Mono', monospace;
 }
 
 .open-box {
-  border: 2px solid lightgreen;
+  border: 2px solid #eee4e1ff;
   font-size: 20px; 
-  background-color: lightgreen;
+  background-color: #eee4e1ff;
   border-collapse: separate;
   border-spacing: 2px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  color: black;
 }
 
 .some-element {
@@ -328,22 +373,29 @@
 }
 
 .waiting-box {
-  border: 10px solid lightyellow;
+  border: 10px solid #ffe0b2;
   font-size: 20px; 
-  background-color: lightyellow;
+  background-color: #ffe0b2;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .pending-box {
-  border: 10px solid lightblue;
+  border: 10px solid #e6beaeff;
   font-size: 20px; 
-  background-color: lightblue;
+  background-color: #e6beaeff;
   opacity: 1px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  color: black;
 }
 
 .emergency-box {
-  border: 10px solid pink;
+  border: 10px solid #b2967dff;
   font-size: 20px; 
-  background-color: pink;
+  background-color: #b2967dff;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .text-wrapper {
@@ -357,6 +409,33 @@
   grid-column: 3;
   grid-row: 3;
   text-align: center;
+  color: black;
+}
+
+.new-ticket {
+  background-color: #b0bec5; /* Green */
+  display: block;
+  border: none;
+  color: black;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  opacity: .75;
+}
+
+.new-word {
+  background-color: yellow; /* Green */
+  display: block;
+  border: none;
+  color: black;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  opacity: .75;
 }
 
 /* The popup form - hidden by default */
@@ -414,7 +493,7 @@
 }
 
 .button-login {
-  background-color: pink; /* Green */
+  background-color: gray; /* Green */
   display: block;
   border: none;
   color: black;
@@ -427,7 +506,7 @@
 }
 
 .button-logout {
-  background-color: pink; /* Green */
+  background-color: gray; /* Green */
   display: block;
   border: none;
   color: black;
@@ -440,7 +519,7 @@
 }
 
 .button-about {
-  background-color: blue; /* Green */
+  background-color: gray; /* Green */
   display: block;
   border: none;
   color: black;
@@ -453,7 +532,7 @@
 }
 
 .button-documentation {
-  background-color: green; /* Green */
+  background-color: gray; /* Green */
   display: block;
   border: none;
   color: black;
@@ -466,7 +545,7 @@
 }
 
 .button-support {
-  background-color: yellow; /* Green */
+  background-color: gray; /* Green */
   display: block;
   border: none;
   color: black;
@@ -519,7 +598,12 @@ export default {
   },
 
   methods: {
-    
+        setFile: function(event) {
+      if (event.target.files.length > 0) {
+        this.image = event.target.files[0];
+      }
+    },
+
     openForm: function(){
       document.getElementById("myForm").style.display = "block";
     },
@@ -592,7 +676,7 @@ export default {
     openTickets: function() {
       return this.tickets.filter(ticket => ticket.status.toLowerCase( ) === "open")
     },
-    
+
     waitingTickets: function() {
       return this.tickets.filter(ticket => ticket.status.toLowerCase( ) === "waiting")
     },
